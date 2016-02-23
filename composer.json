@@ -1,5 +1,5 @@
 {
-    "name": "nilportugues/laravel5-json-api",
+    "name": "peterviergutz/laravel5-jsonapi",
     "type": "library",
     "description": "Laravel 5 JSON API Transformer Package",
     "keywords": ["laravel", "laravel5", "lumen", "json", "api", "jsonapi", "serializer", "transformer", "psr7", "response"],
@@ -7,8 +7,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Nil Portugués Calderó",
-            "email": "contact@nilportugues.com",
+            "name": "Peter Viergutz",
+            "email": "viergutz@gmail.com",
             "role": "Project Lead Developer"
         }
     ],
