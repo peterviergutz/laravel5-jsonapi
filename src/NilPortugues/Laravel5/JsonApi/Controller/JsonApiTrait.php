@@ -122,6 +122,17 @@ trait JsonApiTrait
     }
 
     /**
+     * @param Request $request
+     *
+     * @return array
+     */
+    protected function getData(Request $request)
+    {
+        $input = json_decode($request->getContent(), true);
+        return $input['data'];
+    }
+
+    /**
      * @return ResourceNotFound
      */
     public function create()
@@ -180,7 +191,7 @@ trait JsonApiTrait
         $resource = new CreateResource($this->serializer);
 
         return $this->addHeaders(
-            $resource->get((array) $request->get('data'), get_class($this->getDataModel()), $createResource)
+            $resource->get($this->getData($request), get_class($this->getDataModel()), $createResource)
         );
     }
 
@@ -215,6 +226,7 @@ trait JsonApiTrait
     }
 
     /**
+     * @param Request $request
      * @param $id
      *
      * @return Response
@@ -240,7 +252,7 @@ trait JsonApiTrait
         return $this->addHeaders(
             $resource->get(
                 $id,
-                (array) $request->get('data'),
+                $this->getData($request),
                 get_class($this->getDataModel()),
                 $find,
                 $update
@@ -283,7 +295,7 @@ trait JsonApiTrait
         return $this->addHeaders(
             $resource->get(
                 $id,
-                (array) $request->get('data'),
+                $this->getData($request),
                 get_class($this->getDataModel()),
                 $find,
                 $update
